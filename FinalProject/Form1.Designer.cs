@@ -31,8 +31,6 @@
             components = new System.ComponentModel.Container();
             toolTip1 = new ToolTip(components);
             numericUpDown1 = new NumericUpDown();
-            comboBoxFont = new ComboBox();
-            numericUpDownFontSize = new NumericUpDown();
             btnSave = new Button();
             btnDelete = new Button();
             btnSetReminder = new Button();
@@ -56,8 +54,8 @@
             exitToolStripMenuItem = new ToolStripMenuItem();
             infoToolStripMenuItem = new ToolStripMenuItem();
             aboutToolStripMenuItem = new ToolStripMenuItem();
+            btnOpenEditor = new Button();
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownFontSize).BeginInit();
             contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)trackBarTransparency).BeginInit();
@@ -71,30 +69,6 @@
             numericUpDown1.Size = new Size(150, 27);
             numericUpDown1.TabIndex = 7;
             toolTip1.SetToolTip(numericUpDown1, "Время через которое напомнить");
-            // 
-            // comboBoxFont
-            // 
-            comboBoxFont.DisplayMember = "5";
-            comboBoxFont.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBoxFont.FormattingEnabled = true;
-            comboBoxFont.Location = new Point(297, 244);
-            comboBoxFont.Name = "comboBoxFont";
-            comboBoxFont.Size = new Size(151, 28);
-            comboBoxFont.TabIndex = 9;
-            toolTip1.SetToolTip(comboBoxFont, "Вид шрифтов текстов");
-            comboBoxFont.SelectedIndexChanged += comboBoxFont_SelectedIndexChanged;
-            // 
-            // numericUpDownFontSize
-            // 
-            numericUpDownFontSize.Location = new Point(298, 278);
-            numericUpDownFontSize.Maximum = new decimal(new int[] { 48, 0, 0, 0 });
-            numericUpDownFontSize.Minimum = new decimal(new int[] { 8, 0, 0, 0 });
-            numericUpDownFontSize.Name = "numericUpDownFontSize";
-            numericUpDownFontSize.Size = new Size(150, 27);
-            numericUpDownFontSize.TabIndex = 10;
-            toolTip1.SetToolTip(numericUpDownFontSize, "Размер текста");
-            numericUpDownFontSize.Value = new decimal(new int[] { 8, 0, 0, 0 });
-            numericUpDownFontSize.ValueChanged += numericUpDownFontSize_ValueChanged;
             // 
             // btnSave
             // 
@@ -190,9 +164,9 @@
             // listBoxNotes
             // 
             listBoxNotes.FormattingEnabled = true;
-            listBoxNotes.Location = new Point(277, 40);
+            listBoxNotes.Location = new Point(297, 40);
             listBoxNotes.Name = "listBoxNotes";
-            listBoxNotes.Size = new Size(306, 164);
+            listBoxNotes.Size = new Size(408, 164);
             listBoxNotes.TabIndex = 6;
             listBoxNotes.SelectedIndexChanged += listBoxNotes_SelectedIndexChanged;
             // 
@@ -211,7 +185,7 @@
             // 
             // trackBarTransparency
             // 
-            trackBarTransparency.Location = new Point(298, 311);
+            trackBarTransparency.Location = new Point(297, 244);
             trackBarTransparency.Maximum = 100;
             trackBarTransparency.Name = "trackBarTransparency";
             trackBarTransparency.Size = new Size(149, 56);
@@ -222,7 +196,6 @@
             // progressBar1
             // 
             progressBar1.Location = new Point(453, 209);
-            progressBar1.Maximum = 10;
             progressBar1.Name = "progressBar1";
             progressBar1.Size = new Size(252, 29);
             progressBar1.TabIndex = 12;
@@ -275,16 +248,25 @@
             aboutToolStripMenuItem.Text = "About Program";
             aboutToolStripMenuItem.Click += aboutToolStripMenuItem_Click;
             // 
+            // btnOpenEditor
+            // 
+            btnOpenEditor.Location = new Point(177, 180);
+            btnOpenEditor.Name = "btnOpenEditor";
+            btnOpenEditor.Size = new Size(114, 29);
+            btnOpenEditor.TabIndex = 15;
+            btnOpenEditor.Text = "Open Editor";
+            btnOpenEditor.UseVisualStyleBackColor = true;
+            btnOpenEditor.Click += btnOpenEditor_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnOpenEditor);
             Controls.Add(btnAddImage);
             Controls.Add(progressBar1);
             Controls.Add(trackBarTransparency);
-            Controls.Add(numericUpDownFontSize);
-            Controls.Add(comboBoxFont);
             Controls.Add(pictureBox1);
             Controls.Add(numericUpDown1);
             Controls.Add(listBoxNotes);
@@ -300,7 +282,6 @@
             Text = "Form1";
             Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownFontSize).EndInit();
             contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)trackBarTransparency).EndInit();
@@ -325,8 +306,6 @@
         private System.Windows.Forms.Timer timer1;
         private NumericUpDown numericUpDown1;
         private PictureBox pictureBox1;
-        private ComboBox comboBoxFont;
-        private NumericUpDown numericUpDownFontSize;
         private TrackBar trackBarTransparency;
         private ProgressBar progressBar1;
         private Button btnAddImage;
@@ -339,5 +318,6 @@
         private ToolStripMenuItem copyToolStripMenuItem;
         private ToolStripMenuItem pasteToolStripMenuItem;
         private ToolStripMenuItem cutToolStripMenuItem;
+        private Button btnOpenEditor;
     }
 }

@@ -15,7 +15,6 @@ namespace FinalProject
             toolTip1.SetToolTip(btnLoad, "Загрузить заметку");
             toolTip1.SetToolTip(btnDelete, "Удалить заметку");
             toolTip1.SetToolTip(btnAddImage, "Добавить изображение");
-
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -72,7 +71,7 @@ namespace FinalProject
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if(progressBar1.Value < 100)
+            if (progressBar1.Value < 100)
             {
                 progressBar1.Value++;
             }
@@ -91,19 +90,6 @@ namespace FinalProject
             {
                 pictureBox1.Image = Image.FromFile(openFileDialog.FileName);
             }
-        }
-
-        private void comboBoxFont_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (comboBoxFont.SelectedItem != null)
-            {
-                richTextBox1.Font = new Font(comboBoxFont.SelectedItem.ToString(), richTextBox1.Font.Size);
-            }
-        }
-
-        private void numericUpDownFontSize_ValueChanged(object sender, EventArgs e)
-        {
-            richTextBox1.Font = new Font(richTextBox1.Font.FontFamily, (float)numericUpDownFontSize.Value);
         }
 
         private void trackBarTransparency_Scroll(object sender, EventArgs e)
@@ -136,10 +122,23 @@ namespace FinalProject
 
         private void cutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if(richTextBox1.SelectedText != "")
+            if (richTextBox1.SelectedText != "")
             {
                 Clipboard.SetText(richTextBox1.SelectedText);
                 richTextBox1.SelectedText = "";
+            }
+        }
+
+        private void btnOpenEditor_Click(object sender, EventArgs e)
+        {
+            using (Form2 form2 = new Form2(richTextBox1.Font, richTextBox1.ForeColor, richTextBox1.Text))
+            {
+                if (form2.ShowDialog() == DialogResult.OK)
+                {
+                    richTextBox1.Font = form2.SelectedFont;
+                    richTextBox1.ForeColor = form2.SelectedColor;
+                    richTextBox1.Text = form2.EditedText;
+                }
             }
         }
     }
